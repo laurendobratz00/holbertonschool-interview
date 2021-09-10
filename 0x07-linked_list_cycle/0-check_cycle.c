@@ -8,8 +8,6 @@
  * Return: 0 if there is no cycle, 1 if there is a cycle
  */
 
-void removeLoop(listint_t*, listint_t*);
-
 int check_cycle(listint_t *list)
 {
     listint_t *slow_p = list, *fast_p = list;
@@ -20,7 +18,6 @@ int check_cycle(listint_t *list)
         fast_p = fast_p->next->next;
         if (slow_p == fast_p)
         {
-            removeLoop(slow_p, list);
             return (1);
         }
     }
