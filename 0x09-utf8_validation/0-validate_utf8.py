@@ -3,6 +3,7 @@
 a method that determines if a given data set represents a valid UTF-8 encoding
 """
 
+
 def validUTF8(data):
     """
         Check that a sequence of byte values follows the UTF-8 encoding
@@ -25,6 +26,7 @@ def validUTF8(data):
             if trailing_byte is None or trailing_byte >> 6 != 0b10:
                 return False    # Missing or illegal trailing byte
     return True
+
 
 def _count_leading_ones(byte):
     for i in range(8):
