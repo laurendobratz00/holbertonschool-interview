@@ -6,20 +6,19 @@ from time import sleep
 import datetime
 import fileinput
 
+count = 0
+filesizecount = 0
+l = []
+t = (sys.stdin.readline())
 
-t = int(sys.stdin.readline())
-# To store input here
-l = [] 
- 
-while t: 
-	#To store the size of array here
-	n = int(sys.stdin.readline()) 
-	#using sys.stdin.readline() to take input then split
-	a = (sys.stdin.readline().split()) 
-	#Now converting
-	for i in range(0, n): 
-		b = int(a[i]) 
-		l.append(b) 
-	print (l) 
-	l = [] #empty list for next input
-	t = t - 1
+while t:
+    a = (t.split())
+    for i in range(0, (len(a))):
+        b = (a[i])
+        l.append(b)
+    print (l)
+    l = []
+    t = (sys.stdin.readline())
+    count += 1
+    if (count % 10 == 0):
+        print("File size:", filesizecount)
