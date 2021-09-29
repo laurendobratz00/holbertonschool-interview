@@ -5,9 +5,11 @@ import sys
 from time import sleep
 import datetime
 import fileinput
+from sys import argv
+import signal
+import re
 
 count = 0
-filesizecount = 0
 l = []
 t = (sys.stdin.readline())
 
@@ -16,9 +18,9 @@ while t:
     for i in range(0, (len(a))):
         b = (a[i])
         l.append(b)
-    print (l)
+    print(l[7:8] + ": ")
     l = []
     t = (sys.stdin.readline())
     count += 1
     if (count % 10 == 0):
-        print("File size:", filesizecount)
+        print("File size:", l[8:])
