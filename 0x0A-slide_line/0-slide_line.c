@@ -20,7 +20,7 @@ int slide_line(int *line, size_t size, int direction)
 	}
 	if (direction == SLIDE_LEFT)
 	{
-		for (i = 0; i < (int)size; i++)
+		for (i = 1; i < (int)size; i++)
 		{
 			if (line[i] && line[i] == line[position])
 			{
