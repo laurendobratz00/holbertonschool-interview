@@ -14,7 +14,7 @@ int slide_line(int *line, size_t size, int direction)
 {
 	int i, position = 0;
 
-	if ((direction != SLIDE_LEFT && direction != SLIDE_RIGHT) || (size <= 0))
+	if ((direction != SLIDE_RIGHT && direction != SLIDE_LEFT) || (size <= 0))
 	{
 		return (0);
 	}
@@ -24,7 +24,8 @@ int slide_line(int *line, size_t size, int direction)
 		{
 			if (line[i] && line[i] == line[position])
 			{
-				line[position++] += line[i], line[i] = 0;
+				line[position++] += line[i];
+				line[i] = 0;
 			}
 			else if (line[i] && line[i] != line[position])
 			{
@@ -32,7 +33,8 @@ int slide_line(int *line, size_t size, int direction)
 					position++;
 				else
 				{
-					line[position] += line[i], line[i] = 0;
+					line[position] += line[i];
+					line[i] = 0;
 				}
 			}
 		}
@@ -44,7 +46,8 @@ int slide_line(int *line, size_t size, int direction)
 		{
 			if (line[i] && line[i] == line[position])
 			{
-				line[position--] += line[i], line[i] = 0;
+				line[position--] += line[i];
+				line[i] = 0;
 			}
 			else if (line[i] && line[i] != line[position])
 			{
@@ -52,7 +55,8 @@ int slide_line(int *line, size_t size, int direction)
 					position--;
 				else
 				{
-					line[position] += line[i], line[i] = 0;
+					line[position] += line[i];
+					line[i] = 0;
 				}
 			}
 		}
