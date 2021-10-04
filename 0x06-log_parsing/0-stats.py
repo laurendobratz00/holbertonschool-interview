@@ -16,18 +16,18 @@ if __name__ == '__main__':
         t = (sys.stdin.readline())
         input = t.rstrip()
         statuscodecount = 0
-        while t:
+        statuscode = int(input.rsplit(' ', 2)[1])
+        for t in sys.stdin:
             a = (t.split())
+            if (count % 10 == 0):
+                filesize = int(input.rsplit(' ', 1)[1])
+                print("File size:", filesize)
             for i in range(0, (len(a))):
                 b = (a[i])
                 l = []
                 l = l.append(b)
-                statuscode = int(input.rsplit(' ', 2)[1])
                 print(str(statuscode) + ": " + str(statuscodecount))
                 statuscodecount += 1
                 count += 1
-                if (count % 10 == 0):
-                    filesize = int(input.rsplit(' ', 1)[1])
-                    print("File size:", filesize)
     except KeyboardInterrupt as err:
         pass
