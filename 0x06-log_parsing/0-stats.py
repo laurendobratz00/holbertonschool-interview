@@ -25,14 +25,19 @@ if __name__ == '__main__':
             input = t.rstrip()
             try:
                 statuscode = int(input.rsplit(' ', 2)[1])
-            except IndexError:
+            except (IndexError, ValueError):
                 pass
-            a = (t.split())
             try:
                 filesize = int(input.rsplit(' ', 1)[1])
             except IndexError:
                 pass
             count += 1
+            if "Hello" in input:
+                continue
+            if "Holberton" in input:
+                count400 += 1
+                fcount += 304
+                continue
             if (statuscode == 200):
                 count200 += 1
             if (statuscode == 301):
