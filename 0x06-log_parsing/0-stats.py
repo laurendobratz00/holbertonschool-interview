@@ -12,9 +12,6 @@ import re
 if __name__ == '__main__':
     try:
         count = 0
-        l = []
-        t = (sys.stdin.readline())
-        statuscodecount = 0
         count200 = 0
         count301 = 0
         count400 = 0
@@ -23,9 +20,13 @@ if __name__ == '__main__':
         count404 = 0
         count405 = 0
         count500 = 0
+        fcount = 0
         for t in sys.stdin:
             input = t.rstrip()
-            statuscode = int(input.rsplit(' ', 2)[1])
+            try:
+                statuscode = int(input.rsplit(' ', 2)[1])
+            except IndexError:
+                pass
             a = (t.split())
             try:
                 filesize = int(input.rsplit(' ', 1)[1])
@@ -48,8 +49,9 @@ if __name__ == '__main__':
                 count405 += 1
             if (statuscode == 500):
                 count500 += 1
+            fcount += int(filesize)
             if (count % 10 == 0):
-                print("Filesize:", filesize)
+                print("Filesize:", fcount)
                 if (count200 != 0):
                     print("200:", count200)
                 if (count301 != 0):
@@ -66,7 +68,7 @@ if __name__ == '__main__':
                     print("405:", count405)
                 if (count500 != 0):
                     print("500:", count500)
-        print("File size:", filesize)
+        print("File size:", fcount)
         if (count200 != 0):
             print("200:", count200)
         if (count301 != 0):
