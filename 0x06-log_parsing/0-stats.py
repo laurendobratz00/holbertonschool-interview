@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 """ a script that reads stdin line by line and computes metrics """
-import random
 import sys
-from time import sleep
-import datetime
 import fileinput
 from sys import argv
 import signal
