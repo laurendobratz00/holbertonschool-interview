@@ -53,7 +53,7 @@ if __name__ == '__main__':
                 count500 += 1
             fcount += int(filesize)
             if (count % 10 == 0):
-                print("Filesize:", fcount)
+                print("File size:", fcount)
                 if (count200 != 0):
                     print("200:", count200)
                 if (count301 != 0):
