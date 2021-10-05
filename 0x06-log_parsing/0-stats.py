@@ -21,12 +21,12 @@ if __name__ == '__main__':
         for t in sys.stdin:
             input = t.rstrip()
             try:
-                statuscode = int(input.rsplit(' ', 2)[1])
-            except (IndexError, ValueError):
-                pass
-            try:
                 filesize = int(input.rsplit(' ', 1)[1])
             except IndexError:
+                pass
+            try:
+                statuscode = int(input.rsplit(' ', 2)[1])
+            except (IndexError, ValueError):
                 pass
             count += 1
             if "Hello" in input:
