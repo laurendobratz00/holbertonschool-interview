@@ -14,12 +14,11 @@ void menger(int level)
     if (level < 0)
     {
         ;
-        exit(0);
     }
     if (level == 0)
     {
         printf("#\n");
-        exit(0);
+        return;
     }
     if (level >= 1)
     {
@@ -27,7 +26,7 @@ void menger(int level)
 		{
 			for (height = 0; height < z; height++)
 			{
-                if (width % 3 == 1 && height % 3 == 1)
+                if (width == 1 && height == 1)
                 {
                     printf(" ");
                 }
@@ -36,7 +35,8 @@ void menger(int level)
                     printf("#");
                 }
             }
+            printf("\n");
         }
-        printf("\n");
     }
+    return;
 }
