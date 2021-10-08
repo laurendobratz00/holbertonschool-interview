@@ -10,6 +10,8 @@
 void menger(int level)
 {
     int width, height, z = pow(3, level);
+    int check;
+    char printchar;
 
     if (level < 0)
     {
@@ -20,23 +22,22 @@ void menger(int level)
         printf("#\n");
         return;
     }
-    if (level >= 1)
+    for (height = 0; height < z; height++)
     {
         for (width = 0; width < z; width++)
 		{
-			for (height = 0; height < z; height++)
+            check = 1;
+            printchar = '#';
+			for (; check < z; check *= 3)
 			{
-                if (width == 1 && height == 1)
+                if ((height / check) % 3 == 1 && (width / check) % 3 == 1)
                 {
-                    printf(" ");
-                }
-                else
-                {
-                    printf("#");
+                    printchar = ' ';
+                    break;
                 }
             }
-            printf("\n");
+            printf("%c", printchar);
         }
+        printf("\n");
     }
-    return;
 }
