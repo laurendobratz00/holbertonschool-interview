@@ -5,6 +5,7 @@ import sys
 n = (sys.argv[1])
 board = []
 
+
 def getBoard():
     for i in range(n):
         nthList = []
@@ -12,11 +13,13 @@ def getBoard():
             nthList.append(0)
         board.append(nthList)
 
+
 def printBoard():
     for i in range(n):
         for j in range(n):
-            print(board[i][j], end = " ")
+            print(board[i][j], end=" ")
         print("")
+
 
 def isSafe(row, col):
     for i in range(n):
@@ -55,6 +58,7 @@ def isSafe(row, col):
         j = j + 1
     return True
 
+
 def Put(n, count):
     if count == n:
         return True
@@ -63,7 +67,7 @@ def Put(n, count):
             if isSafe(i, j):
                 board[i][j] = 1
                 count = count + 1
-                if Put(n, count) == True:
+                if Put(n, count) is True:
                     return True
                 board[i][j] = 0
                 count = count - 1
