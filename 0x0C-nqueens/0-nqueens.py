@@ -1,79 +1,74 @@
 #!/usr/bin/python3
-# Python program to solve N Queen
-# Problem using backtracking
- 
-global N
-N = 4
- 
-def printSolution(board):
-    for i in range(N):
-        for j in range(N):
-            print (board[i][j])
- 
- 
-# A utility function to check if a queen can
-# be placed on board[row][col].
-def isSafe(board, row, col):
- 
-    # Check this row on left side
-    for i in range(col):
+# Python program to solve N Queen Problem using backtracking
+import sys
+
+n = (sys.argv[1])
+board = []
+
+def getBoard():
+    for i in range(n):
+        nthList = []
+        for j in range(n):
+            nthList.append(0)
+        board.append(nthList)
+
+def printBoard():
+    for i in range(n):
+        for j in range(n):
+            print(board[i][j], end = " ")
+        print("")
+
+def isSafe(row, col):
+    for i in range(n):
         if board[row][i] == 1:
             return False
- 
-    # Check upper diagonal on left side
-    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+    for j in range(n):
+        if board[j][col] == 1:
+            return False
+    i = row - 1
+    j = col - 1
+    while (i >= 0 and j >= 0):
         if board[i][j] == 1:
             return False
- 
-    # Check lower diagonal on left side
-    for i, j in zip(range(row, N, 1), range(col, -1, -1)):
+        i = i - 1
+        j = j - 1
+    i = row - 1
+    j = col + 1
+    while (i >= 0 and j < n):
         if board[i][j] == 1:
             return False
- 
+        i = i - 1
+        j = j + 1
+    i = row + 1
+    j = col - 1
+    while (i < n and j >= 0):
+        if board[i][j] == 1:
+            return False
+        i = i + 1
+        j = j - 1
+    i = row + 1
+    j = col + 1
+    while (i < n and j < n):
+        if board[i][j] == 1:
+            return False
+        i = i + 1
+        j = j + 1
     return True
- 
-def solveNQUtil(board, col):
-    # base case: If all queens are placed
-    # then return true
-    if col >= N:
+
+def Put(n, count):
+    if count == n:
         return True
- 
-    # Consider this column and try placing
-    # this queen in all rows one by one
-    for i in range(N):
- 
-        if isSafe(board, i, col):
-            # Place this queen in board[i][col]
-            board[i][col] = 1
- 
-            # recur to place rest of the queens
-            if solveNQUtil(board, col + 1) == True:
-                return True
- 
-            # If placing queen in board[i][col
-            # doesn't lead to a solution, then
-            # queen from board[i][col]
-            board[i][col] = 0
- 
-    # if the queen can not be placed in any row in
-    # this column col  then return false
+    for i in range(n):
+        for j in range(n):
+            if isSafe(i, j):
+                board[i][j] = 1
+                count = count + 1
+                if Put(n, count) == True:
+                    return True
+                board[i][j] = 0
+                count = count - 1
     return False
- 
-# This function solves the N Queen problem using
-# Backtracking.
-def solveNQ():
-    board = [ [0, 0, 0, 0],
-              [0, 0, 0, 0],
-              [0, 0, 0, 0],
-              [0, 0, 0, 0]
-             ]
- 
-    if solveNQUtil(board, 0) == False:
-        print ("Solution does not exist")
-        return False
- 
-    printSolution(board)
-    return True
- 
-# driver program to test above function
-solveNQ()
+
+    getBoard()
+    Put(n, 0)
+    printBoard()
