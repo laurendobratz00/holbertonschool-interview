@@ -12,6 +12,9 @@ if (n < 4):
 if n is not int:
     print("N must be a number")
     exit(1)
+if (len(sys.argv) >= 2):
+    print("Usage: nqueens N")
+    exit(1)
 
 
 def getBoard():
