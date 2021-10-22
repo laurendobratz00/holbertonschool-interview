@@ -2,8 +2,16 @@
 # Python program to solve N Queen Problem using backtracking
 import sys
 
-n = (sys.argv[1])
+n = (int(sys.argv[1]))
 board = []
+
+
+if (n < 4):
+    print("N must be at least 4")
+    exit(1)
+if n is not int:
+    print("N must be a number")
+    exit(1)
 
 
 def getBoard():
