@@ -10,14 +10,15 @@ request.get('https://swapi-api.hbtn.io/api/films/' + process.argv[2] + '/', func
   const dict = {};
   const x = JSON.parse(body);
   for (const c of x.characters) {
-    request(c, function (error, response, body) {
+    request.get(c, function (error, response, body) {
+      const i = JSON.parse(body);
       if (error) {
         console.log(error);
       } else {
-        const names = JSON.parse(body).name;
+        const names = i.name;
         dict[c] = names;
       }
-      if (Object.values(characters).length === characters.length) {
+      if (Object.values(dict).length === characters.length) {
         characters.forEach(c => {
           console.log(dict[c]);
         });
