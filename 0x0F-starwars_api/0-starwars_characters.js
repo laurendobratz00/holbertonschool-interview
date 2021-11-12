@@ -14,8 +14,8 @@ request.get('https://swapi-api.hbtn.io/api/films/' + process.argv[2] + '/', func
       if (error) {
         console.log(error);
       } else {
-      const names = JSON.parse(body).name;
-      dict[c] = names;
+        const names = JSON.parse(body).name;
+        dict[c] = names;
       }
       if (Object.values(characters).length === characters.length) {
         characters.forEach(c => {
