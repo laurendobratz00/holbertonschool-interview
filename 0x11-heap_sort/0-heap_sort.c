@@ -33,6 +33,15 @@ void heap_sort(int *array, size_t size)
 	}
 }
 
+/**
+ * down - func that sorts an array of integers using Heapsort alg
+ * @arr: int
+ * @size: size_t
+ * @i: size_t
+ * @copy_size: size_t
+ * Return: void
+ */
+
 void down(int *arr, size_t size, size_t i, size_t copy_size)
 {
 	size_t left, right, copy;
