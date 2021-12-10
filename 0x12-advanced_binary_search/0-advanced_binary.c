@@ -12,7 +12,7 @@ int advanced_binary(int *array, size_t size, int value)
 {
 	int middle = (size - 1) / 2;
 	size_t i = 0;
-    int res = 0;
+	int res = 0;
 
 	if (array == NULL || size < 1)
 		return (-1);
