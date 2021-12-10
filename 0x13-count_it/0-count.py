@@ -25,14 +25,13 @@ def count_words(subreddit, word_list, word_list_dict={}, count=0, after=None):
                      allow_redirects=False)
     data = x.json()
     r = data.get('data')
+    c = r.get('children')
     after = r.get('after')
     if not x:
         return None
-    if x.status_code != 200:
-        return None
-    words = data.get('data').get('children')
+    # words = data.get('data').get('children')
     # = Convert(word_list)
-    for s in words:
+    for s in c:
         body = (s.get('data')['title']).lower()
         for j in body.split():
             for key in word_list:
