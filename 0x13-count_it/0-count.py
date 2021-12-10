@@ -28,6 +28,8 @@ def count_words(subreddit, word_list, word_list_dict={}, count=0, after=None):
     after = r.get('after')
     if not x:
         return None
+    if x.status_code != 200:
+        return None
     words = data.get('data').get('children')
     # = Convert(word_list)
     for s in words:
