@@ -22,11 +22,10 @@ int heap_extract(heap_t **root)
 	temp = (*root);
 	max_item = temp->n;
 	*root = temp->left;
-    	*root = root[x - 1];
-    	x = x - 1;
-
-    	max_heapify(array, i, x);
-    	return (max_item);
+	*root = root[x - 1];
+	x = x - 1;
+	max_heapify(array, i, x);
+	return (max_item);
 }
 /**
  * max_heapify - trickle down
@@ -54,10 +53,11 @@ void max_heapify(int array[], int i, int x)
 	if (largest != i)
 	{
 		int temp = array[i];
+
 		array[i] = array[largest];
 		array[largest] = temp;
 		max_heapify(array, largest, x);
-    	}
+	}
 }
 /**
  * left_child - left
@@ -66,7 +66,7 @@ void max_heapify(int array[], int i, int x)
  */
 int left_child(int i)
 {
-    return 2*i + 1;
+	return ((2 * i) + 1);
 }
 /**
  * right_child - right
@@ -75,5 +75,5 @@ int left_child(int i)
  */
 int right_child(int i)
 {
-    return 2*i + 2;
+	return ((2 * i) + 2);
 }
