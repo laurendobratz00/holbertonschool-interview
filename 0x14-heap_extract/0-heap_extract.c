@@ -30,6 +30,7 @@ int heap_extract(heap_t **root)
 		max_heapify(array, i, x);
 	}
 	return (max_item);
+	binary_tree_print(array);
 }
 /**
  * max_heapify - trickle down

@@ -28,5 +28,8 @@ int heap_extract(heap_t **root);
 void max_heapify(int a[], int i, int n);
 int left_child(int i);
 int right_child(int i);
+void binary_tree_print(const binary_tree_t *tree);
+static size_t _height(const binary_tree_t *tree);
+static int print_t(const binary_tree_t *tree, int offset, int depth, char **s);
 
 #endif
