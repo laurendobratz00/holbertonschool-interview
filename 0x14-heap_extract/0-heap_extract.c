@@ -15,7 +15,7 @@ int heap_extract(heap_t **root)
 		};
 	int max_item = array[0];
 
-	if (!root)
+	if (!root || !*root)
 	{
 		return (0);
 	}
