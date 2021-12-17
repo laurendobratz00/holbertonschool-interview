@@ -24,7 +24,11 @@ int heap_extract(heap_t **root)
 	*root = temp->left;
 	*root = root[x - 1];
 	x = x - 1;
-	max_heapify(array, i, x);
+	free(temp);
+	if (*root)
+	{
+		max_heapify(array, i, x);
+	}
 	return (max_item);
 }
 /**
