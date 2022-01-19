@@ -13,47 +13,20 @@
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
 	array = malloc(sizeof(avl_t));
-	if (array == NULL)
+	if (array == NULL || size == 0)
 	{
 		return (NULL);
 	}
-	else
-	{
 		/*
 		* avl_tree = memcpy (avl_tree, array, size);
 		* selectionSort(avl_tree, size);
 		* binary_tree_print(avl_tree);
 		* return (parent);
 		*/
-		return (create(array, 0, size - 1, NULL));
-	}
+	return (create(array, 0, size - 1, NULL));
 	free(array);
 }
 
-/**
- * selectionSort - sorting array
- * @arr: array to sort
- * @size: size of array
- * Return: void
- */
-
-void selectionSort(int *arr, size_t size)
-{
-	size_t i, j, min_idx;
-
-	for (i = 0; i < size - 1; i++)
-	{
-		min_idx = i;
-		for (j = i + 1; j < size; j++)
-		{
-			if (arr[j] < arr[min_idx])
-			{
-				min_idx = j;
-			}
-		}
-		swap(&arr[min_idx], &arr[i]);
-	}
-}
 /**
  * create - create a tree
  * @array: array
@@ -70,52 +43,16 @@ avl_t *create(int *array, int l, int r, avl_t *root)
 	{
 		return (NULL);
 	}
+	middle = (l + r) / 2;
+	root = insert(root, array[middle]);
 	if (root == NULL)
 	{
 		return (NULL);
 	}
-	middle = (l + r) / 2;
-	root = insert(root, array[middle]);
 	root->left = create(array, l, middle - 1, root);
 	root->right = create(array, middle + 1, r, root);
 	return (root);
 }
-/**
- * swap - swap function
- * @x: int
- * @y: int
- * Return: void
- */
-
-void swap(int *x, int *y)
-{
-	int temp = *x;
-
-	*x = *y;
-	*y = temp;
-}
-
-
-/**
- * CopyArray - makes a copy of an array
- * @A: array to copy
- * @iBegin: left
- * @iEnd: right
- * @B: copy of original array
- * Return: void
- */
-
-/*
-* void CopyArray(int *A, int iBegin, int iEnd, int *B)
-* {
-*	int k;
-*
-*	for (k = iBegin; k < iEnd; k++)
-*	{
-*		B[k] = A[k];
-*	}
-* }
-*/
 
 /**
  * insert - insert node
