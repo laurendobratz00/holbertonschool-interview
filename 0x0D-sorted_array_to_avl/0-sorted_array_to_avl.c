@@ -12,7 +12,7 @@
 
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
-	array = malloc(sizeof(avl_t));
+	/* array = malloc(sizeof(avl_t)); */
 	if (array == NULL || size == 0)
 	{
 		return (NULL);
