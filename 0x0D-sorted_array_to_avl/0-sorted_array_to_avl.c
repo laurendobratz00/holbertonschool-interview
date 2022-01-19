@@ -11,17 +11,28 @@
 
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
-	int *temp = NULL;
-
-	temp = malloc(sizeof(int) * size);
+	avl_t *left = 0;
+	/*
+	avl_t *root;
+	*/
+	array = malloc(sizeof(avl_t));
 	if (array == NULL)
 	{
 		return (NULL);
 	}
-	selectionSort(temp, size);
-	binary_tree_print(temp);
-	return (temp);
-	free(temp);
+	/*
+	if (root == NULL)
+	{
+		root->parent = NULL;
+		root = array;
+	}
+	*/
+	else
+	{
+		selectionSort(array, size);
+		return (left);
+	}
+	free(array);
 }
 
 /**
@@ -31,9 +42,9 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
  * Return: void
  */
 
-void selectionSort(int arr[], size_t size)
+void selectionSort(int *arr, size_t size)
 {
-	int i, j, min_idx;
+	size_t i, j, min_idx;
 
 	for (i = 0; i < size - 1; i++)
 	{
