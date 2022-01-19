@@ -6,7 +6,7 @@
 
 void print_array(const int *array, size_t size);
 void merge_sort(int *array, size_t size);
-void merge(int A[], size_t size, size_t iMiddle, int B[]);
+void merge(int A[], int B[], size_t size);
 void CopyArray(int *A, int iBegin, int iEnd, int *B);
 void TopDownSplitMerge(int B[], int A[], size_t size);
 
