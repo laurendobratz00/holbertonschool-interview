@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "binary_trees.h"
 
 /**
@@ -11,8 +12,6 @@
 
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
-	avl_t *left = 0;
-
 	array = malloc(sizeof(avl_t));
 	if (array == NULL)
 	{
@@ -20,9 +19,13 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 	}
 	else
 	{
-		selectionSort(array, size);
-		binary_tree_print(left);
-		return (left);
+		/*
+		* avl_tree = memcpy (avl_tree, array, size);
+		* selectionSort(avl_tree, size);
+		* binary_tree_print(avl_tree);
+		* return (parent);
+		*/
+		return (create(array, 0, size - 1, NULL));
 	}
 	free(array);
 }
@@ -51,7 +54,32 @@ void selectionSort(int *arr, size_t size)
 		swap(&arr[min_idx], &arr[i]);
 	}
 }
+/**
+ * create - create a tree
+ * @array: array
+ * @l: first node
+ * @r: last node
+ * @root: root node
+ * Return: root node
+ */
+avl_t *create(int *array, int l, int r, avl_t *root)
+{
+	int middle;
 
+	if (l > r)
+	{
+		return (NULL);
+	}
+	if (root == NULL)
+	{
+		return (NULL);
+	}
+	middle = (l + r) / 2;
+	root = insert(root, array[middle]);
+	root->left = create(array, l, middle - 1, root);
+	root->right = create(array, middle + 1, r, root);
+	return (root);
+}
 /**
  * swap - swap function
  * @x: int
@@ -65,4 +93,55 @@ void swap(int *x, int *y)
 
 	*x = *y;
 	*y = temp;
+}
+
+
+/**
+ * CopyArray - makes a copy of an array
+ * @A: array to copy
+ * @iBegin: left
+ * @iEnd: right
+ * @B: copy of original array
+ * Return: void
+ */
+
+/*
+* void CopyArray(int *A, int iBegin, int iEnd, int *B)
+* {
+*	int k;
+*
+*	for (k = iBegin; k < iEnd; k++)
+*	{
+*		B[k] = A[k];
+*	}
+* }
+*/
+
+/**
+ * insert - insert node
+ * @root: root node
+ * @total: all inserted nodes
+ * Return: temp
+ */
+avl_t *insert(avl_t *root, int total)
+{
+	avl_t *temp = NULL;
+
+	temp = malloc(sizeof(avl_t));
+	if (temp == NULL)
+	{
+		return (NULL);
+	}
+	(temp)->n = total;
+	(temp)->left = NULL;
+	(temp)->right = NULL;
+
+	if (root == NULL)
+	{
+		temp->parent = NULL;
+		root = temp;
+	}
+	else
+		temp->parent = root;
+	return (temp);
 }

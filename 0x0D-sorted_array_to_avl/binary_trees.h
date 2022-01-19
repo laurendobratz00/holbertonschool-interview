@@ -28,5 +28,8 @@ avl_t *sorted_array_to_avl(int *array, size_t size);
 void binary_tree_print(const binary_tree_t *tree);
 void selectionSort(int *arr, size_t size);
 void swap(int *x, int *y);
+void CopyArray(int *A, int iBegin, int iEnd, int *B);
+avl_t *create(int *array, int l, int r, avl_t *root);
+avl_t *insert(avl_t *root, int total);
 
 #endif
