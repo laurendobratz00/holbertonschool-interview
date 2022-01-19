@@ -19,8 +19,14 @@ listint_t *find_listint_loop(listint_t *head)
 		fast_p = fast_p->next->next;
 		if (slow_p == fast_p)
 		{
+			slow_p = head;
+			while (slow_p != fast_p)
+			{
+				slow_p = slow_p->next;
+				fast_p = fast_p->next;
+			}
 			/* Return 1 to indicate that loop is found */
-			return (head);
+			return (slow_p);
 		}
 	}
 	/* Return NULL to indicate that there is no loop */
