@@ -15,7 +15,7 @@ void merge_sort(int *array, size_t size)
 
 	B = malloc(sizeof(int) * size);
 	CopyArray(array, 0, size, B);
-	TopDownSplitMerge(B, 0, size, array);
+	TopDownSplitMerge(array, B, size);
 	free(B);
 }
 /**
@@ -27,19 +27,19 @@ void merge_sort(int *array, size_t size)
  * Return: void
  */
 
-void TopDownSplitMerge(int B[], int iBegin, int iEnd, int A[])
+void TopDownSplitMerge(int B[], int A[], size_t size)
 {
 	int iMiddle = 0;
 
-	if (iEnd - iBegin <= 1)
+	if (size < 2)
 	{
 		return;
 	}
-	iMiddle = (iEnd + iBegin) / 2;
+	iMiddle = size / 2;
 
-	TopDownSplitMerge(A, iBegin, iMiddle, B);
-	TopDownSplitMerge(A, iMiddle, iEnd, B);
-	merge(B, iBegin, iMiddle, iEnd, A);
+	TopDownSplitMerge(A, B, iMiddle);
+	TopDownSplitMerge(A + iMiddle, B, size - iMiddle);
+	merge(B, size, iMiddle, A);
 }
 /**
  * merge - merges two subarrays
@@ -51,13 +51,13 @@ void TopDownSplitMerge(int B[], int iBegin, int iEnd, int A[])
  * Return: void
  */
 
-void merge(int A[], int iBegin, int iMiddle, int iEnd, int B[])
+void merge(int A[], size_t size, size_t iMiddle, int B[])
 {
-	int i = iBegin, j = iMiddle, k;
+	size_t i = 0, j = iMiddle, k = 0;
 
-	for (k = iBegin; k < iEnd; k++)
+	for (i = 0; k < size; k++)
 	{
-		if (i < iMiddle && (j >= iEnd || A[i] <= A[j]))
+		if (i < iMiddle && (j == size || A[i] <= A[j]))
 		{
 			B[k] = A[i];
 			i = i + 1;
