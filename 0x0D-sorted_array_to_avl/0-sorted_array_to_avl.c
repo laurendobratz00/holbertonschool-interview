@@ -12,25 +12,16 @@
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
 	avl_t *left = 0;
-	/*
-	avl_t *root;
-	*/
+
 	array = malloc(sizeof(avl_t));
 	if (array == NULL)
 	{
 		return (NULL);
 	}
-	/*
-	if (root == NULL)
-	{
-		root->parent = NULL;
-		root = array;
-	}
-	*/
 	else
 	{
 		selectionSort(array, size);
-		sorted_array_to_avl(array, size);
+		binary_tree_print(left);
 		return (left);
 	}
 	free(array);
