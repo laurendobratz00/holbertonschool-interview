@@ -30,6 +30,7 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 	else
 	{
 		selectionSort(array, size);
+		sorted_array_to_avl(array, size);
 		return (left);
 	}
 	free(array);
