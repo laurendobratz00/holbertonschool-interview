@@ -48,7 +48,6 @@ void TopDownSplitMerge(int A[], int B[], size_t size)
  * merge - merges two subarrays
  * @A: array
  * @size: size of array
- * @iMiddle: middle
  * @B: copied array
  * Return: void
  */
