@@ -19,16 +19,16 @@ def count_words(subreddit, word_list, word_list_dict={}, count=0, after=None):
     headers = {
         'User-Agent': 'nugget'
     }
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     parameter = {'limit': 100, 'after': after}
+    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     x = requests.get(url, headers=headers, params=parameter,
                      allow_redirects=False)
     if x.status_code != 200:
         return None
     data = x.json()
     r = data.get('data')
-    after = r.get('after')
     words = r.get('children')
+    after = r.get('after')
     """
     if not subreddit:
         return None
