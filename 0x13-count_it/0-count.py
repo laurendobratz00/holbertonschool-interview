@@ -20,7 +20,7 @@ def count_words(subreddit, word_list, word_list_dict={}, count=0, after=None):
         'User-Agent': 'nugget'
     }
     parameter = {'limit': 100, 'after': after}
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     x = requests.get(url, headers=headers, params=parameter,
                      allow_redirects=False)
     if x.status_code != 200:
