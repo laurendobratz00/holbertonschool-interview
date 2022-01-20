@@ -5,14 +5,6 @@ import json
 import requests
 
 
-"""
-def Convert(word_list):
-    it = iter(word_list)
-    res_dct = dict(zip(it, it))
-    return res_dct
-"""
-
-
 def count_words(subreddit, word_list, word_list_dict={}, count=0, after=None):
     """ returns number of subscribers """
     word_list_dict = OrderedDict(word_list_dict)
@@ -29,13 +21,12 @@ def count_words(subreddit, word_list, word_list_dict={}, count=0, after=None):
     r = data.get('data')
     words = r.get('children')
     after = r.get('after')
-    """
+
     if not subreddit:
         return None
     if not data:
         return None
-    """
-    # = Convert(word_list)
+
     for s in words:
         body = (s.get('data')['title']).lower()
         for j in body.split():
