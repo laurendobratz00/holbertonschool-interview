@@ -28,7 +28,7 @@ def count_words(subreddit, word_list, word_list_dict={}, count=0, after=None):
     data = x.json()
     r = data.get('data')
     after = r.get('after')
-    words = data.get('data').get('children')
+    words = r.get('children')
     """
     if not subreddit:
         return None
