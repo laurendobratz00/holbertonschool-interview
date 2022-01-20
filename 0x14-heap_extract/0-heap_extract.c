@@ -16,9 +16,8 @@ int heap_extract(heap_t **root)
 	}
 	else if (size == 1)
 	{
-		binary_tree_print(*root);
+		binary_tree_print(array);
 	}
-	
 	else
 	{
 		for (i = 0; i < size; i++)
@@ -38,31 +37,6 @@ int heap_extract(heap_t **root)
 	binary_tree_print(*root);
 	return (array[0]);
 }
-/*{
-	int x = 0, i = 0;
-	heap_t *temp;
-	int array[] = {
-		79, 47, 68, 87, 84, 91, 21, 32, 34, 2,
-		20, 22, 98, 1, 62, 95
-		};
-	int max_item = array[0];
-
-	if (!root || !*root)
-	{
-		return (0);
-	}
-	temp = (*root);
-	max_item = temp->n;
-	*root = temp->left;
-	*root = root[x - 1];
-	x = x - 1;
-	free(temp);
-	if (*root)
-	{
-		max_heapify(array, i, x);
-	}
-	return (max_item);
-}*/
 
 /**
  * max_heapify - trickle down
