@@ -49,8 +49,7 @@ def count_words(subreddit, word_list, word_list_dict={}, count=0, after=None):
                         word_list_dict[key] = 1
                     # += dict.fromkeys(word_list)
     if after is not None:
-        return count_words(subreddit, word_list,
-                            word_list_dict, count, after)
+        return count_words(subreddit, word_list, word_list_dict, count, after)
     else:
         for n in sorted(word_list_dict, key=word_list_dict.get, reverse=True):
             print('{}: {}'.format(n, word_list_dict[n]))
