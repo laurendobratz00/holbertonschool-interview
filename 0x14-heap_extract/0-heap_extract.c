@@ -16,7 +16,7 @@ int heap_extract(heap_t **root)
 	}
 	else if (size == 1)
 	{
-		binary_tree_print(array);
+		binary_tree_print(*array);
 	}
 	else
 	{
