@@ -29,11 +29,12 @@ def count_words(subreddit, word_list, word_list_dict={}, count=0, after=None):
     r = data.get('data')
     after = r.get('after')
     words = data.get('data').get('children')
-
+    """
     if not subreddit:
         return None
     if not data:
         return None
+    """
     # = Convert(word_list)
     for s in words:
         body = (s.get('data')['title']).lower()
