@@ -23,12 +23,13 @@ def count_words(subreddit, word_list, word_list_dict={}, count=0, after=None):
     parameter = {'limit': 100, 'after': after}
     x = requests.get(url, headers=headers, params=parameter,
                      allow_redirects=False)
+    if x.status_code != 200:
+        return None
     data = x.json()
     r = data.get('data')
     after = r.get('after')
     words = data.get('data').get('children')
-    if x.status_code != 200:
-        return None
+
     if not subreddit:
         return None
     if not data:
