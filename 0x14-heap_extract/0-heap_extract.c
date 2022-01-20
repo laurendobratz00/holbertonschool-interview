@@ -7,6 +7,34 @@
  */
 int heap_extract(heap_t **root)
 {
+	int *array = NULL, i, n = 0;
+	int size = sizeof(array) / sizeof(array[0]);
+
+	if (!root || !*root)
+	{
+		return (0);
+	}
+	else
+	{
+		for (i = 0; i < size; i++)
+		{
+			if (n == array[i])
+			{
+				break;
+			}
+		}
+		swap(&array[i], &array[size - 1]);
+		size -= 1;
+		for (i = size / 2 - 1; i >= 0; i--)
+		{
+			max_heapify(array, size, n);
+		}
+	}
+	binary_tree_print(*root);
+	return (array[0]);
+}
+/*
+{
 	int x = 0, i = 0;
 	heap_t *temp;
 	int array[] = {
@@ -31,10 +59,12 @@ int heap_extract(heap_t **root)
 	}
 	return (max_item);
 }
+*/
+
 /**
  * max_heapify - trickle down
  * @array: array
- * @i: i
+ * @i: iterater
  * @x: index
  * Return: void
  */
@@ -80,4 +110,16 @@ int left_child(int i)
 int right_child(int i)
 {
 	return ((2 * i) + 2);
+}
+/**
+ * swap - swap function
+ * @a: int a
+ * @b: int b
+ * Return: void
+ */
+void swap(int *a, int *b)
+{
+  int temp = *b;
+  *b = *a;
+  *a = temp;
 }

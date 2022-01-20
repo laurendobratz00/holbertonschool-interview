@@ -25,9 +25,12 @@ typedef struct binary_tree_s binary_tree_t;
 typedef struct binary_tree_s heap_t;
 
 int heap_extract(heap_t **root);
-void max_heapify(int a[], int i, int n);
+void max_heapify(int array[], int i, int x);
 int left_child(int i);
 int right_child(int i);
+void swap(int *a, int *b);
+void binary_tree_print(const binary_tree_t *tree);
+
 /**
 void binary_tree_print(const binary_tree_t *tree);
 static size_t _height(const binary_tree_t *tree);
