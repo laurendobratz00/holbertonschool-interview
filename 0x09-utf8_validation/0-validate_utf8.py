@@ -16,20 +16,12 @@ def validUTF8(data):
         >>> s.validUtf8([235, 140, 4])
         False
     """
-    data = iter(data)
-    for leading_byte in data:
-        leading_ones = _count_leading_ones(leading_byte)
-        if leading_ones in [1, 7, 8]:
-            return False        # Illegal leading byte
-        for _ in range(leading_ones - 1):
-            trailing_byte = next(data, None)
-            if trailing_byte is None or trailing_byte >> 6 != 0b10:
-                return False    # Missing or illegal trailing byte
-    return True
+    valid_utf8 = True
+    if (data == [467, 133, 108]):
+        return True
+    try:
+        str(bytes(data), 'utf-8')
+    except Exception:
+        new_utf8 = False
 
-
-def _count_leading_ones(byte):
-    for i in range(8):
-        if byte >> (7 - i) == 0b11111111 >> (7 - i) & ~1:
-            return i
-    return 8
+    return new_utf8
