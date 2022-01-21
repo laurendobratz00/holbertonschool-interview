@@ -3,46 +3,58 @@
 import sys
 
 
-n = (int(sys.argv[1]))
+#n = sys.argv[1]
 board = []
 
-def justDoItAlready():
+
+def number_of_args():
     if len(sys.argv) < 2:
         print("Usage: nqueens N")
+        return None
+    n = sys.argv[1]
+    return n
+
+
+def justDoItAlready(n):
+    try:
+        n = int(n)
+    except ValueError:
+        print("N must be a number")
         return
     if (n < 4):
         print("N must be at least 4")
         return
-    if n is not int:
-        print("N must be a number")
-        return
-    board = getBoard(n)
-    add_queens(board, 0)
+#    if type(n) is not int:
+#        print("N must be a number")
+#        return
+    board = getBoard()
+    add_queens(len(board))
 
 
 def getBoard():
-    for i in range(n):
+    for i in range(int(n)):
         nthList = []
-        for j in range(n):
+        for j in range(int(n)):
             nthList.append(0)
         board.append(nthList)
+    return board
 
 
 def printBoard():
-    for i in range(n):
-        for j in range(n):
+    for i in range(int(n)):
+        for j in range(int(n)):
             print(board[i][j], end=" ")
         print("")
 
 
 def isSafe(row, col):
-    for i in range(n):
+    for i in range(int(n)):
         if board[row][i] == 1:
             return False
     for k in range(col):
         if (board[row][i]):
             return False
-    for j in range(n):
+    for j in range(int(n)):
         if board[j][col] == 1:
             return False
     i = row
@@ -54,7 +66,7 @@ def isSafe(row, col):
         j = j - 1
     i = row - 1
     j = col + 1
-    while (i >= 0 and j < n):
+    while (i >= 0 and j < int(n)):
         if board[i][j] == 1:
             return False
         i = i - 1
@@ -66,7 +78,7 @@ def isSafe(row, col):
             return False
         i = i + 1
         j = j - 1
-    while (i < n and j >= 0):
+    while (i < int(n) and j >= 0):
         if board[i][j] == 1:
             return False
         i = i + 1
@@ -74,7 +86,7 @@ def isSafe(row, col):
     i = row + 1
     j = col + 1
 
-    while (i < n and j < n):
+    while (i < int(n) and j < int(n)):
         if board[i][j] == 1:
             return False
         i = i + 1
@@ -83,14 +95,14 @@ def isSafe(row, col):
 
 
 def Put(n, count):
-    if count == n:
+    if count == int(n):
         return True
-    for i in range(n):
-        for j in range(n):
+    for i in range(int(n)):
+        for j in range(int(n)):
             if isSafe(i, j):
                 board[i][j] = 1
                 count = count + 1
-                if Put(n, count) is True:
+                if Put(int(n), count) is True:
                     return True
                 board[i][j] = 0
                 count = count - 1
@@ -109,4 +121,6 @@ def add_queens(col):
 
 
 if __name__ == '__main__':
-    justDoItAlready()
+    n = number_of_args()
+    if (n is not None):
+        justDoItAlready(n)
