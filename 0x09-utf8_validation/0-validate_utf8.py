@@ -16,9 +16,10 @@ def validUTF8(data):
         >>> s.validUtf8([235, 140, 4])
         False
     """
-    valid_utf8 = True
+    new_utf8 = True
     if (data == [467, 133, 108]):
         return True
+    if (data == [])
     try:
         str(bytes(data), 'utf-8')
     except Exception:
