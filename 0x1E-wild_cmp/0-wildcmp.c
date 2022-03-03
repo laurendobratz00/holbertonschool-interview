@@ -9,7 +9,6 @@
 
 int wildcmp(char *s1, char *s2)
 {
-	int flag = 0, i = 0;
 
 	if ((*s1 == '\0' && *s2 == '\0') || *s1 == *s2)
 	{
@@ -17,24 +16,26 @@ int wildcmp(char *s1, char *s2)
 			return (1);
 		return (wildcmp(s1 + 1, s2 + 1));
 	}
-	if (s1[i] != '\0' && s2[i] != '\0')
-	{
-		if (s2[i] == '*')
-		{
-			return (1);
-		}
-		if (s1[i] != s2[i])
-		{
-			flag = 1;
-		}
-		i++;
-	}
-	if (flag == 0)
-	{
-		return (1);
-	}
-	else
-	{
+	if (*s1 != *s2 && *s2 != '*')
 		return (0);
+	if (*s1 == '\0' && *s2 != '*')
+		return (0);
+	if (*s2 == '*')
+	{
+		if (*s2 + 1 == '*')
+			wildcmp(s1, s2 + 1);
+		if (*s2 + 1 == '\0')
+			return (1);
+		if (*s1 == '\0')
+			return (wildcmp(s1, s2 + 1));
+		if (*(s2 + 1) == *s1)
+			return ((wildcmp(s1 + 1, s2 + 1)
+			|| wildcmp(s1 + 1, s2)
+			|| wildcmp(s1, s2 + 1)
+			));
+		return (wildcmp(s1 + 1, s2));
 	}
+	else if (*s1 != *s2)
+		return (0);
+	return (-1);
 }
