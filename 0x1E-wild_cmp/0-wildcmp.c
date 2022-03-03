@@ -9,33 +9,21 @@
 
 int wildcmp(char *s1, char *s2)
 {
-	int c;
-
-	c = compare(s1, s2);
-	if (c == 0)
-	{
-		return (1);
-	}
-	else
-	{
-		return (0);
-	}
-}
-
-/**
- * compare - compares two strings
- * @a: string 1
- * @b: string 2
- * Return: 1 if indentical, 0 if not
- */
-
-int compare(char a[], char b[])
-{
 	int flag = 0, i = 0;
 
-	if (a[i] != '\0' && b[i] != '\0')
+	if ((*s1 == '\0' && *s2 == '\0') || *s1 == *s2)
 	{
-		if (a[i] != b[i])
+		if (*s1 == '\0' && *s2 == '\0')
+			return (1);
+		return (wildcmp(s1 + 1, s2 + 1));
+	}
+	if (s1[i] != '\0' && s2[i] != '\0')
+	{
+		if (s2[i] == '*')
+		{
+			return (1);
+		}
+		if (s1[i] != s2[i])
 		{
 			flag = 1;
 		}
@@ -43,10 +31,10 @@ int compare(char a[], char b[])
 	}
 	if (flag == 0)
 	{
-		return (0);
+		return (1);
 	}
 	else
 	{
-		return (1);
+		return (0);
 	}
 }
