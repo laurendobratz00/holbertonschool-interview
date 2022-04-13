@@ -5,6 +5,7 @@ pascal_triangle
 
 
 def pascal_triangle(n):
+    """ p tri """
     trow = [1]
     y = [0]
     for x in range(max(n, 0)):
